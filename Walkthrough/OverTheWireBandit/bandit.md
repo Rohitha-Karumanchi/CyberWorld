@@ -1,5 +1,13 @@
 https://overthewire.org/wargames/bandit/
-* for ssh used mremoteng (can use anything of your choice )
+
+## Introduction
+* The OverTheWire Bandit wargame is aimed at absolute beginners.
+* It will teach the basics needed to be able to play other wargames.
+* You will learn to use basic Linux commands and how to interact with the system.
+* To start the game, you need to connect to the Bandit server using SSH.
+#### for ssh used i mremoteng (can use anything of your choice )
+* Each level has a goal, which is usually to find a password for the next level.
+
 
 # Level0
 The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.
@@ -8,58 +16,64 @@ The goal of this level is for you to log into the game using SSH. The host to wh
 
 # Level0-Level1
 The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game
-* Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/8552029c-cbbb-45f1-be73-bfbc8ba82f3c)
+* Process: use cat command to view the readme file
+*  ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/8552029c-cbbb-45f1-be73-bfbc8ba82f3c)
 
 # Level1-Level2:
 The password for the next level is stored in a file called - located in the home directory
 * ref: https://medium.com/@.Qubit/how-to-create-open-find-remove-dashed-filename-in-linux-27ee297d1740
-* Connection: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/0726d97d-2ad7-4dc4-a913-c4103b9701e2)
+* to open a file with -, you can use cat < - or cat ./- or more ./-
 * Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/7df76e6c-ff5e-4632-bdd2-ad5a4714bafc)
 
 # Level2-Level3:
 The password for the next level is stored in a file called spaces in this filename located in the home directory
-* Connection: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/c701625b-3b70-46a7-96a3-e5e250ebb1b4)
-* Used tab after cat command : cat sp[PressedTab]
-* Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/f913f9aa-e112-4c90-bac2-6fdd95878537)
+* Process: Use tab after cat command: cat sp[PressedTab]
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/f913f9aa-e112-4c90-bac2-6fdd95878537)
 
 # Level3-Level4:
 The password for the next level is stored in a hidden file in the inhere directory.
-* Connection: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/c1acfc09-a6bf-478e-946e-6675ac0e22af)
 * Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/435719a5-783d-42e6-ac1d-95b57361c135)
 
 # Level4-Level5:
 The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
-* Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/2d2b8c34-882b-452c-828e-09232335a262)
+* Process: try cat command on the files in inhere dir. As the files have -, the prev level learnings comes to rescue.
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/2d2b8c34-882b-452c-828e-09232335a262)
 
 # Level5-Level6:
 The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
 human-readable, 1033 bytes in size, not executable
-* Ref: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size 
-* Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/09d2e269-a54d-45d1-ae59-1a24973f6391)
+* Ref: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size
+* Process: use find command to search for a specific file size. > file . -size 1033c
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/09d2e269-a54d-45d1-ae59-1a24973f6391)
 
 # Level6-Level7:
 The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, 33 bytes in size
 * Ref: https://www.cyberciti.biz/faq/how-do-i-find-all-the-files-owned-by-a-particular-user-or-group/
-* Process : ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/0faad0be-0ec0-403f-bde2-d255949ef49f)
+* Process : Similar to prev level, use find command. > find / -size 33c -user bandit7 -group bandit6
+* skim through through the output and cat the file that matches the criteria
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/0faad0be-0ec0-403f-bde2-d255949ef49f)
 * ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/edf6d502-ff77-4365-bcfc-7536d6ed6f8e)
 
 # Level7-Level8:
 The password for the next level is stored in the file data.txt next to the word millionth
-* Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/acaace9f-271b-4fbd-a884-ff79801de8b7)
+* Process: Use grep command for fetching through the file
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/acaace9f-271b-4fbd-a884-ff79801de8b7)
 
 # Level8-Level9
 The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
 * Ref: https://www.javatpoint.com/linux-uniq#:~:text=The%20'%2Du'%20option%20is,the%20result%20to%20standard%20output.
-* Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/a85881c2-6b1a-456b-9636-5034b6a87ada)
+* Process: Use sort and uniq commands
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/a85881c2-6b1a-456b-9636-5034b6a87ada)
 
 # Level9-Level10
 The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-* process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/e57b6ddf-11d4-44b1-b65b-61c6dfa3dc2a)
-* just do cat
+* process:  just do cat and skim through the output
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/e57b6ddf-11d4-44b1-b65b-61c6dfa3dc2a)
 
 # Level10-level11:
 The password for the next level is stored in the file data.txt, which contains base64 encoded data
-* Process: ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/e0e6f505-ba4b-4185-86de-ea629ea55517)
+* Process: get the encoded data by using cat on data.txt and use an online base64 decoder for password.
+* ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/e0e6f505-ba4b-4185-86de-ea629ea55517)
 * ![image](https://github.com/Rohitha-Karumanchi/cyberSecurity/assets/88244973/b25f7b07-ce6e-481d-a33d-c45ade8ad149)
 
 # Level11-Level12:
@@ -74,7 +88,7 @@ The password for the next level is stored in the file data.txt, which is a hexdu
 * copy the data file to the newly created directory [cp ~/data.txt data]
 * The file has been compressed repeatedly, so the key here is to check the file type [file filename] and decompress it based on the file type [google the needed commands]
 * Repeat the above, until we achieve ASCII Text file type.
-* The decompression commands that are useful in this level are : for gzip file type[mv filename filename.gz , gunzip filename.gz],  for tar file type [tar -xf filename], foe hexdunp [xxd -r filename > binaryextractedfilename], for bzip2 [bunzip2 filename]
+* The decompression commands that are useful in this level are : for gzip file type[mv filename filename.gz , gunzip filename.gz],  for tar file type [tar -xf filename], for hexdunp [xxd -r filename > binaryextractedfilename], for bzip2 [bunzip2 filename]
 * ![image](https://github.com/user-attachments/assets/3985e4f3-fb4f-4b94-bd0a-bbdb6f377204)
 
 # Level13-Level14:
@@ -101,6 +115,7 @@ The credentials for the next level can be retrieved by submitting the password o
 * Now we'll find out which of the listening ports speak SSL: use this command on each of the listening port and enter l16 password : ncat - ssl localhost <port>
 * The correct one will give RSA private key
 * navigate to tmp : cd tmp :and create a file to store the RSA private key : touch key16.key : add the private key in the file : nano key16.key (ctrl+x to save, Y , enter)
+* use the private key to login to next level using ssh command similar to prev levels(l14-l15)
 * ![image](https://github.com/user-attachments/assets/acc6d4c5-2c7d-4000-a5eb-ab8492822161)
 * ![image](https://github.com/user-attachments/assets/524e0bc8-019d-4ae3-817a-ecd50fb7751f)
 
@@ -120,12 +135,14 @@ NOTE: if you have solved this level and see ‘Byebye!’ when trying to log int
 # Level19-Level20:
 To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
 * Process: s in permissions means, setuid bit is set
+* the file bandit20-do runs command as other user. Using the read the password for next level in (/etc/bandit_pass/bandit20)
 * ![image](https://github.com/user-attachments/assets/e95b326b-9d62-47f8-aa00-79a1be7c6def)
 
 # Level20-Level21:
 There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
 NOTE: Try connecting to your own network daemon to see if it works as you think
 * Process: netcat: -l for listening
+* use pipe and automate the process to check and run the suconnect on the specified port
 * ![image](https://github.com/user-attachments/assets/9b49e09c-4b8c-48cc-8283-7e2971ffb479)
 
 # Level21-Level22:
