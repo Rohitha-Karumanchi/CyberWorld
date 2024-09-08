@@ -8,12 +8,12 @@ with open('sbom_cdx_syft_reponame.json', 'r') as syft_sbom_file:
 with open('sbom_cdx_bd_reponame.json', 'r') as bd_sbom_file:
     bd_sbom = json.load(bd_sbom_file)
 
-# THis function handles missing fields
+# THis function handles missing fields, ensuring they won’t cause errors by returning an empty list or dictionary if a field is missing in one of the SBOMs.
 def get_field(data, field):
     return data.get(field, [])
 
 # Compare the meta data of two files
-def compare_metadata(syft, blackduck):
+def metadata_comparison(syft, blackduck):
     syft_metadata = syft.get("metadata", {})
     blackduck_metadata = blackduck.get("metadata", {})
     print("Metadata Comparison:")
@@ -21,7 +21,7 @@ def compare_metadata(syft, blackduck):
     print(f"BlackDuck: {len(blackduck_metadata)} metadata fields")
 
 # Component comparison by matching on common fields like 'name' and 'version'
-def compare_components(syft, blackduck):
+def components_comparison(syft, blackduck):
     syft_components = get_field(syft, "components")
     blackduck_components = get_field(blackduck, "components")
     syft_component_names = {comp['name']: comp.get('version') for comp in syft_components}
@@ -39,7 +39,7 @@ def compare_components(syft, blackduck):
     print(f"Components only in BlackDuck: {len(only_in_blackduck)}")
 
 # Compare vulnerabilities
-def compare_vulnerabilities(syft, blackduck):
+def vulnerabilities_comparison(syft, blackduck):
     syft_vulnerabilities = get_field(syft, "vulnerabilities")
     blackduck_vulnerabilities = get_field(blackduck, "vulnerabilities")
     
@@ -48,7 +48,7 @@ def compare_vulnerabilities(syft, blackduck):
     print(f"BlackDuck: {len(blackduck_vulnerabilities)} vulnerabilities")
 
 # Compare dependencies
-def compare_dependencies(syft, blackduck):
+def dependencies_comparison(syft, blackduck):
     syft_dependencies = get_field(syft, "dependencies")
     blackduck_dependencies = get_field(blackduck, "dependencies")
     
